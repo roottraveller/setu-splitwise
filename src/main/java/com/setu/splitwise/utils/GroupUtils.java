@@ -1,4 +1,4 @@
-package com.setu.splitwise.Utils;
+package com.setu.splitwise.utils;
 
 import com.setu.splitwise.model.request.CreateGroupRequest;
 import org.springframework.stereotype.Component;

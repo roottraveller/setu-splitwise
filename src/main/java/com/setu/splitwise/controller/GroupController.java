@@ -1,6 +1,6 @@
 package com.setu.splitwise.controller;
 
-import com.setu.splitwise.Utils.GroupUtils;
+import com.setu.splitwise.utils.GroupUtils;
 import com.setu.splitwise.model.entity.GroupEntity;
 import com.setu.splitwise.model.request.AddUsersToGroupRequest;
 import com.setu.splitwise.model.request.CreateGroupRequest;

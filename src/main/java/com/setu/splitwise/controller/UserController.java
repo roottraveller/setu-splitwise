@@ -1,7 +1,7 @@
 package com.setu.splitwise.controller;
 
 
-import com.setu.splitwise.Utils.UserUtils;
+import com.setu.splitwise.utils.UserUtils;
 import com.setu.splitwise.model.entity.UserEntity;
 import com.setu.splitwise.model.request.CreateUserRequest;
 import com.setu.splitwise.service.UserService;
