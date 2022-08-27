@@ -33,16 +33,6 @@ public class GroupUtils {
         }
     }
 
-    public static void validate(String groupId) {
-        if (groupId == null ||
-                StringUtils.isWhitespaceOrEmpty(groupId)) {
-            throw GenericException.builder()
-                    .httpCode(HttpStatus.BAD_REQUEST.value())
-                    .httpStatus(HttpStatus.BAD_REQUEST.getReasonPhrase())
-                    .context(Map.of("reason", "empty field groupId"))
-                    .build();
-        }
-    }
 
     public static void validate(AddUsersToGroupRequest addUsersToGroupRequest) {
         if (addUsersToGroupRequest == null ||

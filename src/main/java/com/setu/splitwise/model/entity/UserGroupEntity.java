@@ -21,7 +21,7 @@ import java.util.Date;
 public class UserGroupEntity {
     @Id
     @GeneratedValue
-    private String id;
+    private long id;
     private String userId;
     private String groupId;
     @CreationTimestamp

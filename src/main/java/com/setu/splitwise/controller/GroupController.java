@@ -6,6 +6,7 @@ import com.setu.splitwise.model.request.CreateGroupRequest;
 import com.setu.splitwise.model.request.RemoveUserFromGroupRequest;
 import com.setu.splitwise.service.GroupService;
 import com.setu.splitwise.utils.GroupUtils;
+import com.setu.splitwise.utils.Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,13 +27,13 @@ public class GroupController {
 
     @GetMapping("/{groupId}")
     public ResponseEntity<GroupEntity> getGroupInfo(@PathVariable("groupId") String groupId) {
-        GroupUtils.validate(groupId);
+        Utils.validateGroupId(groupId);
         return ResponseEntity.ok(groupService.getGroupInfo(groupId));
     }
 
     @DeleteMapping("/delete")
     public ResponseEntity<GroupEntity> deleteGroup(@RequestBody String groupId) {
-        GroupUtils.validate(groupId);
+        Utils.validateGroupId(groupId);
         return ResponseEntity.ok(groupService.deleteGroup(groupId));
 //        throw new OperationNotSupportedException();
     }

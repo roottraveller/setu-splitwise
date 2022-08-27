@@ -5,6 +5,7 @@ import com.setu.splitwise.utils.UserUtils;
 import com.setu.splitwise.model.entity.UserEntity;
 import com.setu.splitwise.model.request.CreateUserRequest;
 import com.setu.splitwise.service.UserService;
+import com.setu.splitwise.utils.Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
@@ -28,13 +29,13 @@ public class UserController {
 
     @GetMapping("/{userId}")
     public ResponseEntity<UserEntity> getUserInfo(@PathVariable("userId") String userId) {
-        UserUtils.validate(userId);
+        Utils.validateUserId(userId);
         return ResponseEntity.ok(userService.getUserInfo(userId));
     }
 
     @GetMapping("/{userId}/groups")
     public ResponseEntity<List<Pair<String, String>>> getUserGroups(@PathVariable("userId") String userId) {
-        UserUtils.validate(userId);
+        Utils.validateUserId(userId);
         return ResponseEntity.ok(userService.getUserGroups(userId));
     }
 }

@@ -20,7 +20,7 @@ import java.util.Date;
 public class ExpenseEntity {
     @Id
     @GeneratedValue
-    private String id;
+    private long id;
     private String transactionId;
     private String userId;
     private long paidAmount;
