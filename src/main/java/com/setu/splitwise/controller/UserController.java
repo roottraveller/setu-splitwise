@@ -19,14 +19,10 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-    @Autowired
-    private UserUtils userUtils;
 
     @PostMapping("/add")
     public ResponseEntity<UserEntity> createUser(@RequestBody CreateUserRequest createUserRequest) {
-        if (!userUtils.validate(createUserRequest)) {
-            return ResponseEntity.badRequest().build();
-        }
+        UserUtils.validate(createUserRequest);
         return ResponseEntity.ok(userService.createUser(createUserRequest));
     }
 

@@ -6,5 +6,5 @@ import lombok.Data;
 public class Expanse {
     private String userId;
     private long paidAmount;
-    private long ownAmount;
+//    private long ownAmount;
 }

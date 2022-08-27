@@ -1,15 +1,18 @@
 package com.setu.splitwise.service;
 
 import com.setu.splitwise.model.request.CreateExpenseRequest;
+import com.setu.splitwise.model.response.GroupSummaryResponse;
+import com.setu.splitwise.model.response.GroupUserSummaryResponse;
+import com.setu.splitwise.model.response.UserSummaryResponse;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface ExpenseService {
     boolean addExpense(CreateExpenseRequest createExpenseRequest);
 
-    Object getGroupExpenseSummery(String groupId);
+    GroupSummaryResponse getGroupSummary(String groupId);
 
-    Object getGroupUserExpenseSummery(String groupId, String userId);
+    GroupUserSummaryResponse getGroupUserSummary(String groupId, String userId);
 
-    Object getUserExpenseSummery(String userId);
+    UserSummaryResponse getUserSummary(String userId);
 }

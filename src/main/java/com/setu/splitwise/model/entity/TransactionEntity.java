@@ -8,19 +8,17 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 
-@Data
-@Builder
 @Entity
 @Table
-@AllArgsConstructor
+@Data
+@Builder
 @NoArgsConstructor
-public class GroupEntity {
+@AllArgsConstructor
+public class TransactionEntity {
     @Id
-    private String groupId;
-    private String name;
-    private String type;
-    private String createdBy;
+    private String transactionId;
+    private String description;
+    private long total;
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date createdTime;
-
 }

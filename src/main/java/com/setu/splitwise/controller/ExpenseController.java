@@ -1,11 +1,17 @@
 package com.setu.splitwise.controller;
 
 import com.setu.splitwise.model.request.CreateExpenseRequest;
+import com.setu.splitwise.model.response.GroupSummaryResponse;
+import com.setu.splitwise.model.response.GroupUserSummaryResponse;
+import com.setu.splitwise.model.response.UserSummaryResponse;
 import com.setu.splitwise.service.ExpenseService;
+import com.setu.splitwise.utils.ExpenseUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.naming.OperationNotSupportedException;
 
 @Slf4j
 @RestController
@@ -16,31 +22,30 @@ public class ExpenseController {
 
     @PostMapping("/add")
     public ResponseEntity<Boolean> addExpense(@RequestBody CreateExpenseRequest createExpenseRequest) {
+        ExpenseUtils.validate(createExpenseRequest);
         return ResponseEntity.ok(expenseService.addExpense(createExpenseRequest));
     }
 
-
-    @GetMapping ("/summery/{groupId}")
-    public ResponseEntity<Boolean> getGroupExpenseSummery(@PathVariable("groupId") String groupId) {
-        //TODO
-        return ResponseEntity.ok(expenseService.getGroupExpenseSummery(groupId));
+    @GetMapping("/summary/group/{groupId}")
+    public ResponseEntity<GroupSummaryResponse> getGroupSummary(@PathVariable("groupId") String groupId) {
+        return ResponseEntity.ok(expenseService.getGroupSummary(groupId));
     }
 
-    @GetMapping("/summery/{groupId}/{userId}")
-    public ResponseEntity<> getGroupUserExpenseSummery(@PathVariable("groupId") String groupId,
-                                                       @PathVariable("userId") String userId) {
-        return ResponseEntity.ok(expenseService.getGroupUserExpenseSummery(groupId, userId));
+    @GetMapping("/summary/group/{groupId}/{userId}")
+    public ResponseEntity<GroupUserSummaryResponse> getGroupUserSummary(@PathVariable("groupId") String groupId,
+                                                                        @PathVariable("userId") String userId) {
+        return ResponseEntity.ok(expenseService.getGroupUserSummary(groupId, userId));
     }
 
-    @GetMapping("/summery/{userId}")
-    public ResponseEntity<> getUserExpenseSummery(@PathVariable("userId") String userId) {
-        return ResponseEntity.ok(expenseService.getUserExpenseSummery(userId));
+    @GetMapping("/summary/user/{userId}")
+    public ResponseEntity<UserSummaryResponse> getUserSummary(@PathVariable("userId") String userId) {
+        return ResponseEntity.ok(expenseService.getUserSummary(userId));
     }
 
 
     @GetMapping("/simplified")
-    public ResponseEntity<Boolean> simplifiedExpense(){
-        return ResponseEntity.ok(expenseService.simplifiedExpense());
+    public ResponseEntity<Object> simplifiedExpense() throws OperationNotSupportedException {
+        throw new OperationNotSupportedException();
     }
 
 }

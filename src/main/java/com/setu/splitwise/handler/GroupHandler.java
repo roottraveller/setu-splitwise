@@ -7,6 +7,7 @@ import com.setu.splitwise.model.request.CreateGroupRequest;
 import com.setu.splitwise.model.request.RemoveUserFromGroupRequest;
 import com.setu.splitwise.repository.h2.GroupRepository;
 import com.setu.splitwise.repository.h2.UserGroupRepository;
+import com.setu.splitwise.utils.GroupUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,6 +31,7 @@ public class GroupHandler {
 
     public GroupEntity createGroup(CreateGroupRequest createGroupRequest) {
         return groupRepository.save(GroupEntity.builder()
+                .groupId(GroupUtils.generateGroupId())
                 .name(createGroupRequest.getName())
                 .type(createGroupRequest.getType())
                 .createdBy(createGroupRequest.getCreatedBy())

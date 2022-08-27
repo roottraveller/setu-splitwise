@@ -6,11 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Builder
 @Entity
-@Table
+//@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"userId", "groupId"})},
+//        indexes = {@Index(columnList = {"userId", "groupId"})})
 @AllArgsConstructor
 @NoArgsConstructor
 //@NamedNativeQuery(name = "find_user_groups", query = "select groupId from UserGroupEntity where ")
@@ -20,4 +22,6 @@ public class UserGroupEntity {
     private String id;
     private String userId;
     private String groupId;
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date createdTime;
 }

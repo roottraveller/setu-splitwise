@@ -9,7 +9,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table
+//@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"transactionId", "userId"}),
+//        indexes = @Index(columnList = {"groupId", "userId"}))
 @Data
 @Builder
 @NoArgsConstructor
@@ -18,10 +19,12 @@ public class ExpenseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
-    private String groupId;
+    private String transactionId;
     private String userId;
-    private long amount;
+    private long paidAmount;
+    private long balance;
+    private String groupId;
     @Temporal(value = TemporalType.TIMESTAMP)
-    private Date updatedTime;
+    private Date createdTime;
 
 }
