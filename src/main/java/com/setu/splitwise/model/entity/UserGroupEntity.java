@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,6 +24,6 @@ public class UserGroupEntity {
     private String id;
     private String userId;
     private String groupId;
-    @Temporal(value = TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date createdTime;
 }

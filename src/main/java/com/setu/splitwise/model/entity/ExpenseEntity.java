@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -25,7 +26,7 @@ public class ExpenseEntity {
     private long paidAmount;
     private long balance;
     private String groupId;
-    @Temporal(value = TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date createdTime;
 
 }

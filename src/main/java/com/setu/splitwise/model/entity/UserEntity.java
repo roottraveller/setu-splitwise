@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -20,7 +21,7 @@ public class UserEntity {
     private String userId;
     private String name;
     private String email;
-    @Temporal(value = TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date createdTime;
     @Builder.Default
     private Currency default_currency = Currency.INR;
