@@ -19,7 +19,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class ExpenseEntity {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private String id;
     private String transactionId;
     private String userId;

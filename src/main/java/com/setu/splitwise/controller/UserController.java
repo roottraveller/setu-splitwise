@@ -28,11 +28,13 @@ public class UserController {
 
     @GetMapping("/{userId}")
     public ResponseEntity<UserEntity> getUserInfo(@PathVariable("userId") String userId) {
+        UserUtils.validate(userId);
         return ResponseEntity.ok(userService.getUserInfo(userId));
     }
 
     @GetMapping("/{userId}/groups")
     public ResponseEntity<List<Pair<String, String>>> getUserGroups(@PathVariable("userId") String userId) {
+        UserUtils.validate(userId);
         return ResponseEntity.ok(userService.getUserGroups(userId));
     }
 }
