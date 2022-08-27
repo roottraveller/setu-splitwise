@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table
 //@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"transactionId", "userId"}),
 //        indexes = @Index(columnList = {"groupId", "userId"}))
 @Data
@@ -17,7 +18,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class ExpenseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String transactionId;
     private String userId;
