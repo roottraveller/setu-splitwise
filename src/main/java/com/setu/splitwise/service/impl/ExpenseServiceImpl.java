@@ -15,4 +15,19 @@ public class ExpenseServiceImpl implements ExpenseService {
     public boolean addExpense(CreateExpenseRequest createExpenseRequest) {
         return expenseHandler.addExpense(createExpenseRequest);
     }
+
+    @Override
+    public Object getGroupExpenseSummery(String groupId) {
+        return expenseHandler.getGroupExpenseSummery(groupId);
+    }
+
+    @Override
+    public Object getGroupUserExpenseSummery(String groupId, String userId) {
+        return null;
+    }
+
+    @Override
+    public Object getUserExpenseSummery(String userId) {
+        return null;
+    }
 }

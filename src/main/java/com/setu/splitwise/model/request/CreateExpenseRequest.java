@@ -9,6 +9,6 @@ import java.util.List;
 public class CreateExpenseRequest {
     private String groupId;
     private long cost;
-    private List<Expanse> expanseSharePayloadList;
+    private List<Expanse> expanses;
     private String description;
 }

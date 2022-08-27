@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.OperationNotSupportedException;
+
 @Slf4j
 @RestController
 @RequestMapping("/api/splitwise/group")
@@ -36,6 +38,7 @@ public class GroupController {
     @DeleteMapping("/delete")
     public ResponseEntity<GroupEntity> deleteGroup(@RequestBody String groupId) {
         return ResponseEntity.ok(groupService.deleteGroup(groupId));
+//        throw new OperationNotSupportedException();
     }
 
     @PostMapping("/addusers")

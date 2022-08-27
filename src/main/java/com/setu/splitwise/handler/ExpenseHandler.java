@@ -9,4 +9,8 @@ public class ExpenseHandler {
     public boolean addExpense(CreateExpenseRequest createExpenseRequest) {
         return false;
     }
+
+    public Object getGroupExpenseSummery(String groupId) {
+        return null;
+    }
 }

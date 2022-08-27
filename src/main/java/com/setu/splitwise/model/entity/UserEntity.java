@@ -8,9 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.annotation.PostConstruct;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 import java.util.UUID;
 
 @Data
@@ -24,6 +23,8 @@ public class UserEntity {
     private String userId;
     private String name;
     private String email;
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date createdAt;
     private Currency default_currency;
 
     @PostConstruct

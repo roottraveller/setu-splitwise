@@ -7,9 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.annotation.PostConstruct;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 import java.util.UUID;
 
 @Data
@@ -23,7 +22,9 @@ public class GroupEntity {
     private String groupId;
     private String name;
     private String type;
-    private String createdBy;
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date createdAt;
+    private Date createdBy;
 
     @PostConstruct
     public void init() {

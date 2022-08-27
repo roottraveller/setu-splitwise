@@ -5,10 +5,7 @@ import com.setu.splitwise.service.ExpenseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -22,9 +19,28 @@ public class ExpenseController {
         return ResponseEntity.ok(expenseService.addExpense(createExpenseRequest));
     }
 
-    @PostMapping("/delete")
-    public ResponseEntity<Boolean> deleteExpense(@RequestBody long eidx) {
+
+    @GetMapping ("/summery/{groupId}")
+    public ResponseEntity<Boolean> getGroupExpenseSummery(@PathVariable("groupId") String groupId) {
         //TODO
-        return ResponseEntity.ok(Boolean.FALSE);
+        return ResponseEntity.ok(expenseService.getGroupExpenseSummery(groupId));
     }
+
+    @GetMapping("/summery/{groupId}/{userId}")
+    public ResponseEntity<> getGroupUserExpenseSummery(@PathVariable("groupId") String groupId,
+                                                       @PathVariable("userId") String userId) {
+        return ResponseEntity.ok(expenseService.getGroupUserExpenseSummery(groupId, userId));
+    }
+
+    @GetMapping("/summery/{userId}")
+    public ResponseEntity<> getUserExpenseSummery(@PathVariable("userId") String userId) {
+        return ResponseEntity.ok(expenseService.getUserExpenseSummery(userId));
+    }
+
+
+    @GetMapping("/simplified")
+    public ResponseEntity<Boolean> simplifiedExpense(){
+        return ResponseEntity.ok(expenseService.simplifiedExpense());
+    }
+
 }
