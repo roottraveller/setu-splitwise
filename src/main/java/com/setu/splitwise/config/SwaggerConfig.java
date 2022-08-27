@@ -17,7 +17,8 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.setu.splitwise.controller"))
-                .paths(PathSelectors.regex("/error")) // Exclude Spring error controllers
+//                .paths(PathSelectors.regex("/error")) // Exclude Spring error controllers
+                .paths(PathSelectors.any())
                 .build();
     }
 
