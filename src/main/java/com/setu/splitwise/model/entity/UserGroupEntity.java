@@ -9,14 +9,16 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.util.Date;
 
+
+@Entity
+@Table
+//@Table(
+// uniqueConstraints = {@UniqueConstraint(columnNames = {"USER_ID", "GROUP_ID"})},
+//   indexes = {@Index(columnList = {"USER_ID", "GROUP_ID"})})
 @Data
 @Builder
-@Entity
-//@Table
-//@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"USER_ID", "GROUP_ID"})},
-//        indexes = {@Index(columnList = {"USER_ID", "GROUP_ID"})})
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 //@NamedNativeQuery(name = "find_user_groups", query = "select groupId from UserGroupEntity where ")
 public class UserGroupEntity {
     @Id

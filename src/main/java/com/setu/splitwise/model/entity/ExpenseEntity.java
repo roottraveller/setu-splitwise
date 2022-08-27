@@ -1,5 +1,6 @@
 package com.setu.splitwise.model.entity;
 
+import com.setu.splitwise.model.UserBalance;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,12 +12,29 @@ import java.util.Date;
 
 @Entity
 @Table
-//@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"transactionId", "userId"}),
-//        indexes = @Index(columnList = {"groupId", "userId"}))
+//@Table(
+//        uniqueConstraints = @UniqueConstraint(columnNames = {"transactionId", "userId"}),
+//        indexes = @Index(columnList = {"groupId", "userId"})
+//)
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedNativeQuery(
+        name = "get_user_balance_list",
+        query = "SELECT USER_ID as userId, sum(BALANCE) as balance FROM EXPENSE_ENTITY WHERE GROUP_ID like ?1 group by USER_ID",
+        resultSetMapping = "user_balance_list"
+)
+@SqlResultSetMapping(
+        name = "user_balance_list",
+        classes = @ConstructorResult(
+                targetClass = UserBalance.class,
+                columns = {
+                        @ColumnResult(name = "userId", type = String.class),
+                        @ColumnResult(name = "balance", type = Long.class)
+                }
+        )
+)
 public class ExpenseEntity {
     @Id
     @GeneratedValue

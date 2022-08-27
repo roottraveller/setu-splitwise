@@ -9,12 +9,13 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.util.Date;
 
-@Data
-@Builder
+
 @Entity
 @Table
-@AllArgsConstructor
+@Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class GroupEntity {
     @Id
     private String groupId;

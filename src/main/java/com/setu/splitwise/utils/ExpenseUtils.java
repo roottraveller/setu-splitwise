@@ -31,6 +31,7 @@ public class ExpenseUtils {
                     .build();
         }
 
+        //TODO: validate userId belong to groupId
         long sum = 0;
         for (Expanse expanse : createExpenseRequest.getExpanses()) {
             sum += expanse.getPaidAmount();

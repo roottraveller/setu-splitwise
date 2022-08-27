@@ -1,6 +1,7 @@
 package com.setu.splitwise.handler;
 
 import com.setu.splitwise.model.Expanse;
+import com.setu.splitwise.model.UserBalance;
 import com.setu.splitwise.model.entity.ExpenseEntity;
 import com.setu.splitwise.model.entity.TransactionEntity;
 import com.setu.splitwise.model.request.CreateExpenseRequest;
@@ -12,6 +13,8 @@ import com.setu.splitwise.repository.h2.TransactionRepository;
 import com.setu.splitwise.utils.ExpenseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class ExpenseHandler {
@@ -32,7 +35,7 @@ public class ExpenseHandler {
                     .transactionId(uniqueTransactionId)
                     .userId(expanse.getUserId())
                     .paidAmount(expanse.getPaidAmount())
-                    .balance(perUserShare - expanse.getPaidAmount())
+                    .balance(expanse.getPaidAmount() - perUserShare)
                     .groupId(createExpenseRequest.getGroupId())
                     .build());
         }
@@ -44,7 +47,10 @@ public class ExpenseHandler {
     }
 
     public GroupSummaryResponse getGroupSummary(String groupId) {
-        return expenseRepository.getUserBalanceList(groupId);
+        List<UserBalance> userBalanceList = expenseRepository.getUserBalanceList(groupId);
+        return GroupSummaryResponse.builder()
+                .userBalanceList(userBalanceList)
+                .build();
     }
 
     public UserSummaryResponse getUserSummary(String userId) {
