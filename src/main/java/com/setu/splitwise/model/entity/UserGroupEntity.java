@@ -13,13 +13,30 @@ import java.util.Date;
 @Entity
 @Table
 //@Table(
-// uniqueConstraints = {@UniqueConstraint(columnNames = {"USER_ID", "GROUP_ID"})},
-//   indexes = {@Index(columnList = {"USER_ID", "GROUP_ID"})})
+//        uniqueConstraints = {@UniqueConstraint(columnNames = {"USER_ID", "GROUP_ID"})},
+//        indexes = {@Index(columnList = {"USER_ID", "GROUP_ID"})})
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-//@NamedNativeQuery(name = "find_user_groups", query = "select groupId from UserGroupEntity where ")
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "get_user_all_groups",
+                query = "SELECT distinct GROUP_ID as groupId FROM USER_GROUP_ENTITY WHERE USER_ID like ?1",
+                resultSetMapping = "user_all_groups"
+        )
+})
+@SqlResultSetMappings({
+        @SqlResultSetMapping(
+                name = "user_all_groups",
+                classes = @ConstructorResult(
+                        targetClass = String.class,
+                        columns = {
+                                @ColumnResult(name = "groupId", type = String.class)
+                        }
+                )
+        )
+})
 public class UserGroupEntity {
     @Id
     @GeneratedValue

@@ -5,7 +5,6 @@ import com.setu.splitwise.model.entity.UserEntity;
 import com.setu.splitwise.model.request.CreateUserRequest;
 import com.setu.splitwise.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +25,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Pair<String, String>> getUserGroups(String userId) {
+    public List<String> getUserGroups(String userId) {
         return userHandler.getUserGroups(userId);
     }
 }

@@ -1,8 +1,8 @@
 package com.setu.splitwise.handler;
 
 import com.setu.splitwise.model.Expanse;
-import com.setu.splitwise.model.UserBalance;
 import com.setu.splitwise.model.GroupUserBalance;
+import com.setu.splitwise.model.UserBalance;
 import com.setu.splitwise.model.entity.ExpenseEntity;
 import com.setu.splitwise.model.entity.TransactionEntity;
 import com.setu.splitwise.model.request.CreateExpenseRequest;

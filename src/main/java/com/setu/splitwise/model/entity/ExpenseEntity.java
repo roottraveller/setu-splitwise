@@ -1,7 +1,7 @@
 package com.setu.splitwise.model.entity;
 
-import com.setu.splitwise.model.UserBalance;
 import com.setu.splitwise.model.GroupUserBalance;
+import com.setu.splitwise.model.UserBalance;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

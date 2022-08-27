@@ -6,7 +6,6 @@ import com.setu.splitwise.model.request.AddUsersToGroupRequest;
 import com.setu.splitwise.model.request.CreateGroupRequest;
 import com.setu.splitwise.model.request.RemoveUserFromGroupRequest;
 import lombok.experimental.UtilityClass;
-import org.h2.util.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.CollectionUtils;
 

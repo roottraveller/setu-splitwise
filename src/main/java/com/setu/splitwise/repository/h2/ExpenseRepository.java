@@ -1,7 +1,7 @@
 package com.setu.splitwise.repository.h2;
 
-import com.setu.splitwise.model.UserBalance;
 import com.setu.splitwise.model.GroupUserBalance;
+import com.setu.splitwise.model.UserBalance;
 import com.setu.splitwise.model.entity.ExpenseEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -16,7 +16,7 @@ public interface ExpenseRepository extends CrudRepository<ExpenseEntity, String>
     List<UserBalance> getUserBalanceList(String groupId);
 
     @Query(nativeQuery = true, name = "get_user_balance_in_group")
-    List<UserBalance>  getUserBalance(String groupId, String userId);
+    List<UserBalance> getUserBalance(String groupId, String userId);
 
     @Query(nativeQuery = true, name = "get_user_balance_in_all_group")
     List<GroupUserBalance> getUserBalance(String userId);

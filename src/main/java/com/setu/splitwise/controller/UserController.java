@@ -1,14 +1,13 @@
 package com.setu.splitwise.controller;
 
 
-import com.setu.splitwise.utils.UserUtils;
 import com.setu.splitwise.model.entity.UserEntity;
 import com.setu.splitwise.model.request.CreateUserRequest;
 import com.setu.splitwise.service.UserService;
+import com.setu.splitwise.utils.UserUtils;
 import com.setu.splitwise.utils.Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.util.Pair;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +33,7 @@ public class UserController {
     }
 
     @GetMapping("/{userId}/groups")
-    public ResponseEntity<List<Pair<String, String>>> getUserGroups(@PathVariable("userId") String userId) {
+    public ResponseEntity<List<String>> getUserGroups(@PathVariable("userId") String userId) {
         Utils.validateUserId(userId);
         return ResponseEntity.ok(userService.getUserGroups(userId));
     }
