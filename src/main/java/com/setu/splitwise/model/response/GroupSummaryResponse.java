@@ -13,5 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GroupSummaryResponse {
+    private long total;
     private List<UserBalance> userBalanceList;
 }

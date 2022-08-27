@@ -3,7 +3,6 @@ package com.setu.splitwise.service.impl;
 import com.setu.splitwise.handler.ExpenseHandler;
 import com.setu.splitwise.model.request.CreateExpenseRequest;
 import com.setu.splitwise.model.response.GroupSummaryResponse;
-import com.setu.splitwise.model.response.GroupUserSummaryResponse;
 import com.setu.splitwise.model.response.UserSummaryResponse;
 import com.setu.splitwise.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public GroupUserSummaryResponse getGroupUserSummary(String groupId, String userId) {
+    public UserSummaryResponse getGroupUserSummary(String groupId, String userId) {
         return expenseHandler.getGroupUserSummary(groupId, userId);
     }
 

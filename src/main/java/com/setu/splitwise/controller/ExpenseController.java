@@ -2,7 +2,6 @@ package com.setu.splitwise.controller;
 
 import com.setu.splitwise.model.request.CreateExpenseRequest;
 import com.setu.splitwise.model.response.GroupSummaryResponse;
-import com.setu.splitwise.model.response.GroupUserSummaryResponse;
 import com.setu.splitwise.model.response.UserSummaryResponse;
 import com.setu.splitwise.service.ExpenseService;
 import com.setu.splitwise.utils.ExpenseUtils;
@@ -34,8 +33,8 @@ public class ExpenseController {
     }
 
     @GetMapping("/summary/group/{groupId}/{userId}")
-    public ResponseEntity<GroupUserSummaryResponse> getGroupUserSummary(@PathVariable("groupId") String groupId,
-                                                                        @PathVariable("userId") String userId) {
+    public ResponseEntity<UserSummaryResponse> getGroupUserSummary(@PathVariable("groupId") String groupId,
+                                                                   @PathVariable("userId") String userId) {
         Utils.validate(groupId, userId);
         return ResponseEntity.ok(expenseService.getGroupUserSummary(groupId, userId));
     }

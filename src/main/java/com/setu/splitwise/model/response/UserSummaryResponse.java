@@ -1,13 +1,19 @@
 package com.setu.splitwise.model.response;
 
-import com.setu.splitwise.model.UserGroupBalance;
+import com.setu.splitwise.model.GroupUserBalance;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 
 @Data
+@Builder
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class UserSummaryResponse extends UserGroupBalance {
+@AllArgsConstructor
+public class UserSummaryResponse {
+    private long total;
+    private List<GroupUserBalance> groupUserBalanceList;
 }
